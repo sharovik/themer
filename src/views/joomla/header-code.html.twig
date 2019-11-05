@@ -1,0 +1,46 @@
+<?php
+defined( '_JEXEC' ) or die( 'Restricted access' );
+$document = JFactory::getDocument();
+
+{% if assets.default.css is defined %}
+{% for key, asset in assets.default.css|cast_to_array %}
+$document->addStyleSheet({% if 'http' in asset %}"{{ asset }}"{% else %}$this->baseurl . "/templates/" . $this->template . "/{{ asset }}"{% endif %});
+{% endfor %}
+{% endif %}
+
+{% if assets is defined %}
+{% for page, pageAssets in assets %}
+{% if page != 'default' %}
+{% for type, urls in pageAssets %}
+{% if type == 'css' and (urls is not empty) %}
+
+{% for title, url in urls %}
+$document->addStyleSheet({% if 'http' in asset %}"{{ asset }}"{% else %}$this->baseurl . "/templates/" . $this->template . "/{{ url }}"{% endif %});
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if assets.default.js is defined %}
+{% for key, asset in assets.default.js|cast_to_array %}
+$document->addScript({% if 'http' in asset %}"{{ asset }}"{% else %}$this->baseurl . "/templates/" . $this->template . "/{{ asset }}"{% endif %});
+{% endfor %}
+{% endif %}
+
+{% if assets is defined %}
+{% for page, pageAssets in assets %}
+{% if page != 'default' %}
+{% for type, urls in pageAssets %}
+{% if type == 'js' and (urls is not empty) %}
+{% for title, url in urls %}
+$document->addScript({% if 'http' in asset %}"{{ asset }}"{% else %}$this->baseurl . "/templates/" . $this->template . "/{{ url }}"{% endif %});
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+?>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="template">
+    <name>{{ config.themeAlias }}</name>
+    <creationDate>{{ "now"|date("Y-m-d") }}</creationDate>
+    <author>{{ config.author }}</author>
+    <authorUrl>{{ config.authorUrl }}</authorUrl>
+    <authorEmail>{{ config.authorEmail }}</authorEmail>
+    <description>{{ config.themeName }}</description>
+    <files>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+        {% if directories is defined and directories is not empty %}
+            {% for dir in directories %}
+                <folder>{{ dir }}</folder>
+            {% endfor %}
+        {% endif %}
+    </files>
+    <positions>
+        <position>breadcrumb</position>
+        <position>left</position>
+        <position>right</position>
+        <position>top</position>
+        <position>user1</position>
+        <position>user2</position>
+        <position>user3</position>
+        <position>user4</position>
+        <position>footer</position>
+    </positions>
+</extension>

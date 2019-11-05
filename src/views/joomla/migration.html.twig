@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1" method="upgrade">
+    <name>com_{{ config.themeAlias }}</name>
+    <author>{{ config.author }}</author>
+    <authorEmail>{{ config.authorEmail }}</authorEmail>
+    <authorUrl>{{ config.authorUrl }}</authorUrl>
+    <version>1.0.0</version>
+    <description>COM_{{ config.themeAlias|upper }}_XML_DESCRIPTION</description>
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+
+    <administration>
+        <menu img="class:{{ config.themeAlias }}">com_{{ config.themeAlias }}</menu>
+        <files>
+            <!-- Admin Main File Copy Section -->
+            <!-- SQL files section -->
+            <folder>sql</folder>
+        </files>
+    </administration>
+</extension>
+
+

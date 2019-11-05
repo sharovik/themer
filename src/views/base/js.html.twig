@@ -1,0 +1,7 @@
+{% block js %}
+    {% if js is defined %}
+        {{ js|raw }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

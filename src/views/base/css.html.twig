@@ -1,0 +1,7 @@
+{% block css %}
+    {% if css is defined %}
+        {{ css|raw }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

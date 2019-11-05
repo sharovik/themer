@@ -1,0 +1,9 @@
+{
+  "themeName": "STANLEY",
+  "author": "David Creighton-Pester",
+  "authorUrl": "https://dribbble.com/wanderingbert",
+  "authorEmail": "john@doe.com",
+  "themeVersion": "0.1",
+  "themeAlias": "demo",
+  "engine": "twig"
+}

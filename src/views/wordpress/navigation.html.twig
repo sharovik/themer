@@ -1,0 +1,13 @@
+{% if navigation is defined %}
+<{{ navigation.parent.tag}}{{ navigation.parent.attributes|raw }}>
+    <?php $menu = wp_get_nav_menu_items('{{ menu_title }}'); ?>
+    <?php foreach ($menu as $item): ?>
+    <?php
+        $string = "{{ navigation.childHtml|raw }}";
+        $string = str_replace('LINK_URL', $item->url, $string);
+        $string = str_replace('LINK_TITLE', $item->post_title, $string);
+    ?>
+    <?php echo $string; ?>
+    <?php endforeach; ?>
+</{{ navigation.parent.tag}}>
+{% endif %}

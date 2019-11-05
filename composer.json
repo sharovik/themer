@@ -1,0 +1,11 @@
+{
+  "require": {
+    "twig/twig": "^2.0",
+    "pimple/pimple": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Src\\": "src/"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+<?php
+//init styles
+function init_theme_styles()
+{
+    {% if assets.default.css is defined %}
+    $styles = [
+        {% for key, asset in assets.default.css|cast_to_array %}
+        "{{ key }}" => {% if 'http' in asset %}"{{ asset }}"{% else %}get_template_directory_uri() . "/{{ asset }}"{% endif %},
+        {% endfor %}
+    ];
+    {% endif %}
+
+    {% if assets is defined %}
+    {% for page, pageAssets in assets %}
+    {% if page != 'default' %}
+    {% for type, urls in pageAssets %}
+    {% if type == 'css' and (urls is not empty) %}
+    if (is_page("{{ page }}")) {
+    {% for title, url in urls %}
+    $styles["{{ title }}"] = {% if 'http' in url %}"{{ url }}"{% else %}get_template_directory_uri() . "/{{ url }}"{% endif %};
+    {% endfor %}
+    }
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    foreach ($styles as $name => $src) {
+        wp_enqueue_style($name, $src, false, mt_rand());
+    }
+}
+add_action('wp_enqueue_scripts', 'init_theme_styles');
+
+//init scripts
+function init_theme_scripts()
+{
+    {% if assets.default.js is defined %}
+        $scripts = [
+        {% for key, asset in assets.default.js|cast_to_array %}
+        "{{ key }}" => {% if 'http' in asset %}"{{ asset }}"{% else %}get_template_directory_uri() . "/{{ asset }}"{% endif %},
+        {% endfor %}
+    ];
+    {% endif %}
+
+    {% if assets is defined %}
+    {% for page, pageAssets in assets %}
+    {% if page != 'default' %}
+    {% for type, urls in pageAssets %}
+    {% if type == 'js' and (urls is not empty) %}
+    if (is_page("{{ page }}")) {
+    {% for title, url in urls %}
+        $scripts["{{ title }}"] = {% if 'http' in url %}"{{ url }}"{% else %}get_template_directory_uri() . "/{{ url }}"{% endif %};
+    {% endfor %}
+    }
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    foreach ($scripts as $name => $src) {
+        wp_enqueue_script($name, $src, [], mt_rand(), true);
+    }
+}
+add_action('wp_enqueue_scripts', 'init_theme_scripts');
+
+{% if pages is defined and pages is not empty %}
+add_action( 'after_setup_theme', function(){
+
+    //check if our created custom pages already exists, if not we need to create it with correct slugs
+    $pages = [
+        {% for page in pages %}
+            "{{ page }}",
+        {% endfor %}
+    ];
+
+    if (!empty($pages)) {
+        foreach($pages as $page) {
+            if (!get_page_by_path($page)) {
+                wp_insert_post([
+                    'post_title'   => ucfirst($page),
+                    'post_content' => '',
+                    'post_status'  => 'publish',
+                    'post_type'    => 'page',
+                    'post_name'    => $page,
+                ]);
+            }
+        }
+    }
+});
+
+function register_theme_nav_menu()
+{
+    register_nav_menu('{{ menu_alias }}', __('{{ menu_title }}'));
+
+    // Check if the menu exists
+    $menuName = 'Theme menu';
+    $menuExists = wp_get_nav_menu_object($menuName);
+
+    if (empty($menuExists)) {
+        $menuId = wp_create_nav_menu($menuName);
+
+        $pages = [
+            {% for page in pages %}
+                "{{ page }}",
+            {% endfor %}
+        ];
+
+        foreach ($pages as $page) {
+            $pageObject = get_page_by_title($page);
+            // Set up default menu items
+            wp_update_nav_menu_item($menuId, 0, array(
+                'menu-item-title' => $pageObject->post_title,
+                'menu-item-url' => get_permalink($pageObject),
+                'menu-item-status' => 'publish'
+            ));
+        }
+    }
+}
+
+add_action('init', 'register_theme_nav_menu');
+{% endif %}

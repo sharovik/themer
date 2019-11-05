@@ -1,0 +1,7 @@
+{% block navigation %}
+    {% if navigation is defined %}
+        {{ navigation|raw }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

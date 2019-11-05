@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    {% if css is defined %}
+        {{ css|raw }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    {% if js is defined %}
+        {{ js|raw }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block navigation %}
+    {% if navigation is defined %}
+        {{ navigation|raw }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
