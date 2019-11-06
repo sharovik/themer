@@ -1,5 +1,11 @@
-## What is this?
-This is small application based on PHP, which can help you easily create wordpress template based on your twig template. 
+
+This is an application based on PHP, which can help you easily create wordpress template based on your twig template. 
+
+## How to install
+Clone repository `git clone git@github.com:sharovik/themer.git`
+
+## How to run
+Run the command: `./run --path={PATH_TO_YOUR_PROJECT}`. Example: `./run --path=html/demo/`
 
 ## What is twig?
 Twig is a modern template engine. More information you can [find here](https://twig.symfony.com).
@@ -38,6 +44,3 @@ Currently library supports these kind of fields:
   "engine": "twig"
 }
 ```
-
-## How to compile?
-Run the command: `php run.php --path={PATH_TO_YOUR_PROJECT}`. Example: `php run.php --path=html/demo/`

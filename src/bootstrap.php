@@ -19,10 +19,19 @@ $container['path'] = function ($c) use ($options) {
 };
 
 $container['config'] = function ($c) {
-    $config = [];
     $pathToConfig = $c['path'] . DIRECTORY_SEPARATOR . 'themer.config.json';
     if (file_exists($pathToConfig)) {
         $config = json_decode(file_get_contents($pathToConfig), true);
+    } else {
+        $config = [
+            "themeName" => "Demo theme",
+            "author" => "John Doe",
+            "authorUrl" => "http://john-doe.doe",
+            "authorEmail" => "john@doe.doe",
+            "themeVersion" => "1.0.0",
+            "themeAlias" => "demo-theme",
+            "engine" => "twig",
+        ];
     }
 
     return $config;
