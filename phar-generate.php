@@ -1,6 +1,6 @@
 <?php
 
-$pharFile = 'app.phar';
+$pharFile = 'themer.phar';
 
 // clean up
 if (file_exists($pharFile)) {
