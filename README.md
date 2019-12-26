@@ -11,7 +11,7 @@ PHP 7.1+
 Clone repository `git clone git@github.com:sharovik/themer.git` or download latest version of `themer.phar` bin file.
 
 ## How to run
-Run the command: `./themer.phar --path={PATH_TO_YOUR_PROJECT}`. Example: `./themer.phar --path=html/demo/`
+Run the command: `./themer.phar --path={ABSOLUTE_PATH_TO_YOUR_PROJECT}`. Example: `./themer.phar --path=/var/project/html/demo/`
 
 ## What is twig?
 Twig is a modern template engine. More information you can [find here](https://twig.symfony.com).
