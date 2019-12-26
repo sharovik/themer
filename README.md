@@ -27,12 +27,14 @@ During templates build we also use these kind of blocks:
 1. **header** - for header block, which will be same for each page
 2. **content** - for content block, which can be different for each page
 3. **footer** - for footer block, which will be same for each page
+
 [Here you can see the example](https://github.com/sharovik/themer/blob/master/html/demo/base.html.twig#L1)
 
 Also we have custom blocks, which help use to identify, where is the assets links or navigation parts of template.
 1. **css** - for css block defining
 2. **js** - for js block defining
 3. **navigation** - for navigation block defining
+
 [Here you can see the example](https://github.com/sharovik/themer/blob/master/html/demo/base.html.twig#L14)
 
 In demo template you can find `themer.config.json` file, where you can see base configuration for template. This configuration we use during the template build.
