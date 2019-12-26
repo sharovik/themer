@@ -2,7 +2,7 @@
 This is an application based on PHP, which can help you easily create wordpress template based on your twig template. 
 
 ## Before start
-For a good start, you can check the example of template which you can find in the folder `html/demo`.
+For a good start, you can check the example of template which you can find in the folder `html/demo`
 
 ## Requirenments
 PHP 7.1+
@@ -53,13 +53,8 @@ Currently library supports these kind of fields:
 ```
 
 ## Authors
-
 * **Pavel Simzicov** - *Initial work* - [sharovik](https://github.com/sharovik)
+
+## Dependencies
 * **TemplateMag.com** - *Stanley demo template* - [TemplateMag.com](https://templatemag.com/stanley-bootstrap-freelancer-template/)
-
-## About the author of demo template
-
-- Template Name: Stanley
-- Template URL: https://templatemag.com/stanley-bootstrap-freelancer-template/
-- Author: TemplateMag.com
-- License: https://templatemag.com/license/
+* **Twig** - *The template language* - [Twig Team](https://twig.symfony.com/documentation)
