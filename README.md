@@ -52,9 +52,14 @@ Currently library supports these kind of fields:
 }
 ```
 
+## Authors
+
+* **Pavel Simzicov** - *Initial work* - [sharovik](https://github.com/sharovik)
+* **TemplateMag.com** - *Stanley demo template* - [TemplateMag.com](https://templatemag.com/stanley-bootstrap-freelancer-template/)
+
 ## About the author of demo template
 
-Template Name: Stanley
-Template URL: https://templatemag.com/stanley-bootstrap-freelancer-template/
-Author: TemplateMag.com
-License: https://templatemag.com/license/
+- Template Name: Stanley
+- Template URL: https://templatemag.com/stanley-bootstrap-freelancer-template/
+- Author: TemplateMag.com
+- License: https://templatemag.com/license/
